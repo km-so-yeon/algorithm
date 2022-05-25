@@ -1,16 +1,16 @@
 import sys
 input = sys.stdin.readline
 
-graph = []
-nodeCount = int(input())
-lineCount = int(input())
-
 def dfs(graph, v, visited) :
     visited[v] = True
 
     for i in graph[v] :
         if not visited[i] :
             dfs(graph, i, visited)
+
+graph = []
+nodeCount = int(input())
+lineCount = int(input())
 
 for _ in range(nodeCount + 1) :
     graph.append(list())
