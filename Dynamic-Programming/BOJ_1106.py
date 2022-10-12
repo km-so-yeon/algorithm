@@ -18,7 +18,7 @@ input = sys.stdin.readline
 
 # 입력
 C, N = map(int, input().split())
-DP = [1001] * (C + 1)
+DP = [1001] * 1001
 DP[0] = 0
 cities = []
 
@@ -31,8 +31,9 @@ cities.sort(key=lambda x:x[1])
 for city in cities :
     fee = city[0]
     cst = city[1]
-    for i in range(cst, C + 1) :
+    for i in range(cst, 1001) :
         DP[i] = min(DP[i - cst] + fee, DP[i])
 
 # 출력
-print(DP[C])
+# 적어도 C 이상의 고객을 늘여야하므로, C이상의 고객 중 최소의 비용이 드는 값으로 출력
+print(min(DP[C:]))
