@@ -4,14 +4,10 @@ input = sys.stdin.readline
 # 입력
 N = int(input().rstrip())
 arr = list(map(int, input().split()))
-result = []
+sum = [arr[0]]
 
-# 모든 구간의 합을 구한다
-for i in range(N) :
-    value = 0
-    for j in range(i, N) :
-        value += arr[j]
-        result.append(value)
+# 현재의 값 혹은 합계 + 현재 값 중에서 더 큰 값을 추가한다.
+for i in range(N - 1) :
+    sum.append(max(sum[i] + arr[i + 1], arr[i + 1]))
 
-# 모든 구간의 합 중에서 최대값
-print(max(result))
+print(max(sum))
